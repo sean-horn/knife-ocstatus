@@ -16,7 +16,7 @@
 #
 
 module KnifeOCStatus
-  class OCStatus < Chef::Knife
+  class Ocstatus < Chef::Knife
     banner "knife ocstatus [options]"
 
     deps do
@@ -51,7 +51,7 @@ module KnifeOCStatus
 
     option :smtp_auth,
         :long         => "--smtp-auth METHOD",
-        :description  => "Supports 'plain', 'login' or 'cram_md5'"
+        :description  => "Supports 'plain', 'login' or 'cram_md5'",
         :proc         => Proc.new { |i| Chef::Config[:knife][:smtp_auth] = i },
         :default      => nil
 
