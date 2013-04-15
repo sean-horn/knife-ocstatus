@@ -135,7 +135,7 @@ module KnifeOCStatus
         smtp.start(config[:smtp_domain], config[:smtp_user], smtp_pass, config[:smtp_auth])
       end
 
-      smtp.send_message(mailize(get_message, config[:subject], config[:from_address], config[:to_address]), config[:from_address], config[:to_address])
+      smtp.send_message(mailize(get_message, config[:subject], config[:to_address], config[:from_address]), config[:from_address], config[:to_address])
       puts "E-mail sent"
 
       Twitter.update twitterize(get_message, config[:subject])
