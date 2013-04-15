@@ -8,22 +8,26 @@ This is a knife plugin to update twitter and send e-mail
 
 Put something like this in your knife.rb
 
-Twitter.configure do |config|
-  config.consumer_key = "xxRTUxPhF8dqANgulmao"
-  config.consumer_secret = "Rgt45mO4W44hDzfTWojKpi7gd4245sxroflcoptr"
-  config.oauth_token = "111111111-XuDVjZoeFXj5pw4TQujr9jCBMGeliIu7Uilol"
-  config.oauth_token_secret = "BY4h1GL3W2gGbC2sqj2gCoztMVkzVHjT8gs"
-end
+    Twitter.configure do |config|
+      config.consumer_key = "xxRTUxPhF8dqANgulmao"
+      config.consumer_secret = "Rgt45mO4W44hDzfTWojKpi7gd4245sxroflcoptr"
+      config.oauth_token = "111111111-XuDVjZoeFXj5pw4TQujr9jCBMGeliIu7Uilol"
+      config.oauth_token_secret = "BY4h1GL3W2gGbC2sqj2gCoztMVkzVHjT8gs"
+    end
+    
+    knife[:smtp_host] = "smtp.gmail.com"
+    knife[:smtp_port] = 587
+    knife[:smtp_domain] = "here.com"
+    knife[:smtp_tls] = true
+    knife[:smtp_auth] = :login
+    knife[:smtp_user] = "me@here.com"
+    knife[:smtp_pass] = "my_p@ssw0rd!"
+    knife[:to_address] = "my-status@googlegroups.com"
+    knife[:from_address] = "me@here.com"
 
-knife[:smtp_host] = "smtp.gmail.com"
-knife[:smtp_port] = 587
-knife[:smtp_domain] = "here.com"
-knife[:smtp_tls] = true
-knife[:smtp_auth] = :login
-knife[:smtp_user] = "me@here.com"
-knife[:smtp_pass] = "my_p@ssw0rd!"
-knife[:to_address] = "my-status@googlegroups.com"
-knife[:from_address] = "me@here.com"
+Then use the plugin
+
+    knife ocstatus --subject "HELP!!!" --message "The Internet is on fire!!"
 
 = LICENSE
 
