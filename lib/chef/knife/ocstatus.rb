@@ -101,13 +101,21 @@ module KnifeOCStatus
       end
     end
     
-    def mailize(txt, sub, to, from)
+def mailize(txt, sub, to, from)
+  if config[:smtp_host].include?("outlook.com")
+    "Subject: #{sub}
+
+    #{txt}"
+  else
     "From: Opscode Status <#{from}>
     To: Opscode Status <#{to}>
     Subject: #{sub}
     
     #{txt}"
-    end
+  end
+end
+
+
 
     def run
       smtp = Net::SMTP.new(config[:smtp_host], config[:smtp_port])
